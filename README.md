@@ -187,10 +187,8 @@ Here is a more detailed explanation what the Q(very), K(ey) and V(alue) matrices
 |`Q_"likes"`|What I am looking for|I am looking for the subject|
 |`K_"likes"`|What I match as|I am a good as the verb|
 |`V_"likes"`|What I provide|I have the following encoded features, such as "I am in 3rd person"|
-
-
-
-* **Q(uery)**: 
+z
+> Typically `W_Q`, `W_K`, and `W_V` are projections that are learned and then applied to input `X` to get `Q`, `W`, and `V`. At the end a neural network is a function approximator that maps an input vector to an output vector. Let's imagine a neural network that has an input layer (one neuron per input value, whereby the number is equal to the dimension of the input vector). The input neurons are connected to a hidden layer. The neurons of a hidden layer can be connected to neurons of the next hidden layer. The last hidden layer is connected to an output layer. The number of output neurons determines the dimensionality of the output vector). Connections between neurons are weighted. During learning we compare if the output with the expected value and feed the the discrepancy (error) back by adjusting the weights. The idea is to learn the function step by step until it behaves as expected, not just for the training data but also for not yet presented input values. 
 
 ## Step 6: Calculating the attention matrix
 
