@@ -72,10 +72,14 @@ The first run downloads approximately 480 MB of weights plus the vocabulary
 into the project's `.cache/huggingface` directory. Later runs reuse those files.
 Once downloaded, set `HF_HUB_OFFLINE=1` to skip network checks.
 
+> **GloVe** stands for **Global Vectors for Word Representation**. It is a method for learning word embeddings: numerical vectors that capture patterns in how words are used. It learns from **word co-occurrence**—how often words appear near one another across a large text collection. Words used in similar contexts tend to develop similar vectors
+
 PCA is fitted once per instance on the first 10,000 non-padding vocabulary
 entries, independently of the input sentence. Reuse the instance for multiple
 sentences. No neural network training is required. The output dimension is
 configurable from 1 to 300, defaulting to 3.
+
+> **PCA** stands for **Principal Component Analysis**. It reduces the number of dimensions in data while preserving as much variation as possible.
 
 Lookup lowercases tokens and strips surrounding ASCII punctuation. Unknown
 words get a zero vector; empty input produces an array of shape `(0, dimensions)`.
