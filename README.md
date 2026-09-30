@@ -294,6 +294,16 @@ in the training vocabulary; the tiny model can still produce incorrect results.
 There is no end-of-sequence token, so even a complete sentence gets a next-word
 prediction. Empty input skips the output step along with the other model steps.
 
+> The output layer is also based on a learned function, which can be learned independently. This is often called training a _linear head_ or _linear probe_.
+> The process is:
+
+> 1. Pass training text through the frozen Transformer to obtain its hidden representations.
+> 2. Apply the output layer: `logits = Y @ W_out + bias`.
+> 3. Calculate next-token cross-entropy loss.
+> 4. Update **only `W_out` and `bias`**.
+
+> The Transformer’s weights stay unchanged. Its representations can even be precomputed and reused
+
 ## Optional: Learning the projection weights
 
 Activate the virtual environment and run from the project root:
