@@ -93,7 +93,7 @@ a token position, starting at zero, and each column is an embedding dimension.
 It requires no training or download.
 
 
-> In a sinusoidal matrix, the sine and cosine are used to express the position. They together give you a coordinate. On a circle with radius 1, at angle θ:
+> In a sinusoidal matrix, the sine and cosine are used to express a point on a circle. On a circle with radius 1, at angle θ:
 
 | Angle | Cosine (x) | Sine (y) | Location |
 |---|---:|---:|---|
