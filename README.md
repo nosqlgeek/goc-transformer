@@ -180,6 +180,18 @@ Queries and keys determine attention weights; values supply the information
 combined using those weights. The optional training example below implements
 one causal attention head.
 
+Here is a more detailed explanation what the Q(very), K(ey) and V(alue) matrices provide. Suppose you have the sentence "Alice likes Bob" and we look at the token "likes":
+
+| Vectors for "likes" | Aspect | Example |
+|---|---|---|
+|`Q_"likes"`|What I am looking for|I am looking for the subject|
+|`K_"likes"`|What I match as|I am a good as the verb|
+|`V_"likes"`|What I provide|I have the following encoded features, such as "I am in 3rd person"|
+
+
+
+* **Q(uery)**: 
+
 ## Step 6: Calculating the attention matrix
 
 ```python
