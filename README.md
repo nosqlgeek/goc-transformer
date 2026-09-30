@@ -203,6 +203,8 @@ the number of query/key dimensions (3 here). The causal mask `M` is zero
 on and below the diagonal and negative infinity above it, so future tokens
 receive exactly zero attention. Softmax is applied separately to each row.
 
+> Softmax turns a list of scores into positive weights that sum to 1. Higher scores receive larger weights.
+
 For N tokens, `A` has shape `(N, N)`. Entry `A[i, j]` tells us how strongly
 token i attends to token j. Each row sums to 1 before display rounding.
 Tokens can attend to themselves; the first row is always `[1, 0, ...]`.
@@ -213,6 +215,16 @@ so repeated words remain distinguishable. It works with random weights by
 default and learned weights when using `--train`. The training code shares
 the same attention calculation. V does not enter this calculation; it is
 used afterward to form the context vectors `A @ V`.
+
+```
+               0:The     1:cat     2:sat      3:on     4:the    5:mat.
+     0:The    1.0000    0.0000    0.0000    0.0000    0.0000    0.0000
+     1:cat    0.1008    0.8992    0.0000    0.0000    0.0000    0.0000
+     2:sat    0.0299    0.6374    0.3327    0.0000    0.0000    0.0000
+      3:on    0.4287    0.1562    0.2472    0.1679    0.0000    0.0000
+     4:the    0.4551    0.0592    0.1135    0.1701    0.2021    0.0000
+    5:mat.    0.1530    0.2128    0.2109    0.1343    0.1235    0.1654
+```
 
 ## Step 7: Following value vectors back to tokens
 
