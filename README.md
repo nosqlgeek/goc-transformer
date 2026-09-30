@@ -92,6 +92,17 @@ semantic information and the axes have no predefined meanings.
 a token position, starting at zero, and each column is an embedding dimension.
 It requires no training or download.
 
+
+
+> Sine and cosine together give you a cosine for the other coordinate. On a circle with radius 1, at angle θ:
+
+| Angle | Cosine (x) | Sine (y) | Location |
+|---|---:|---:|---|
+| 0° | 1 | 0 | Right |
+| 90° | 0 | 1 | Top |
+| 180° | −1 | 0 | Left |
+| 270° | 0 | −1 | Bottom |
+
 For position `p` and embedding dimension `d`, the standard formula is:
 
 ```text
