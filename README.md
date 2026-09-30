@@ -93,8 +93,7 @@ a token position, starting at zero, and each column is an embedding dimension.
 It requires no training or download.
 
 
-
-> Sine and cosine together give you a cosine for the other coordinate. On a circle with radius 1, at angle θ:
+> In a sinusoidal matrix, the sine and cosine are used to express the position. They together give you a coordinate. On a circle with radius 1, at angle θ:
 
 | Angle | Cosine (x) | Sine (y) | Location |
 |---|---:|---:|---|
@@ -110,15 +109,21 @@ P[p, 2i]     = sin(p / 10000^(2i/d))
 P[p, 2i + 1] = cos(p / 10000^(2i/d))
 ```
 
-Only columns below `d` are included. With our three dimensions this becomes
-`[sin(p), cos(p), sin(p / 10000^(2/3))]`. The first four rows are approximately:
 
-```text
-[[0.0000,  1.0000, 0.0000],
- [0.8415,  0.5403, 0.0022],
- [0.9093, -0.4161, 0.0043],
- [0.1411, -0.9900, 0.0065]]
-```
+Only columns below `d` are included. With our three dimensions this becomes
+`[sin(p), cos(p), sin(p / 10000^(2/3))]`. 
+
+For our default sentence, **“The cat sat on the mat.”**:
+
+| Position | Token | sin(p) | cos(p) | sin(p / 464.159) |
+|---|---|---:|---:|---:|
+| 0 | The | 0\.0000 | 1\.0000 | 0\.0000 |
+| 1 | cat | 0\.8415 | 0\.5403 | 0\.0022 |
+| 2 | sat | 0\.9093 | −0.4161 | 0\.0043 |
+| 3 | on | 0\.1411 | −0.9900 | 0\.0065 |
+| 4 | the | −0.7568 | −0.6536 | 0\.0086 |
+| 5 | mat. | −0.9589 | 0\.2837 | 0\.0108 |
+
 
 The third coordinate changes slowly for short sentences. These values describe
 position, not word meaning. The encoder supports any positive integer dimension;
